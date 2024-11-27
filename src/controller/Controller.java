@@ -2,7 +2,6 @@ package controller;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
@@ -27,37 +26,36 @@ public class Controller {
         ButtonGroup citizenshipGroup, JTextField citizenshipField, File photoFile, File signatureFile,
         JTextField tglBerlakuField, JTextField kotaPembuatanField, JDatePickerImpl tglPembuatanPicker) {
 
-    // if (nikField.getText().trim().isEmpty()
-    //         || namaField.getText().trim().isEmpty()
-    //         || tempatLahirField.getText().trim().isEmpty()
-    //         || datePicker.getModel().getValue() == null
-    //         || genderGroup.getSelection() == null
-    //         || bloodGroup.getSelection() == null
-    //         || alamatField.getText().trim().isEmpty()
-    //         || rtrw.getText().trim().isEmpty()
-    //         || kelurahanField.getText().trim().isEmpty()
-    //         || kecamatanField.getText().trim().isEmpty()
-    //         || agamaComboBox.getSelectedIndex() == -1
-    //         || perkawinanBox.getSelectedIndex() == -1
-    //         || (!karyawanSwastaCheck.isSelected()
-    //                 && !pnsCheck.isSelected()
-    //                 && !wiraswastaCheck.isSelected()
-    //                 && !akademisiCheck.isSelected()
-    //                 && !pengangguranCheck.isSelected())
-    //         || citizenshipGroup.getSelection() == null
-    //         || (citizenshipGroup.getSelection() != null 
-    //             && citizenshipGroup.getSelection().getActionCommand().equals("WNA")
-    //             && citizenshipField.getText().trim().isEmpty())
-    //         || photoFile == null
-    //         || signatureFile == null
-    //         || tglBerlakuField.getText().trim().isEmpty()
-    //         || kotaPembuatanField.getText().trim().isEmpty()
-    //         || tglPembuatanPicker.getModel().getValue() == null) {
-    //     return false;
-    // } else {
-    //     return true;
-    // }
-    return true;
+    if (nikField.getText().trim().isEmpty()
+            || namaField.getText().trim().isEmpty()
+            || tempatLahirField.getText().trim().isEmpty()
+            || datePicker.getModel().getValue() == null
+            || genderGroup.getSelection() == null
+            || bloodGroup.getSelection() == null
+            || alamatField.getText().trim().isEmpty()
+            || rtrw.getText().trim().isEmpty()
+            || kelurahanField.getText().trim().isEmpty()
+            || kecamatanField.getText().trim().isEmpty()
+            || agamaComboBox.getSelectedIndex() == -1
+            || perkawinanBox.getSelectedIndex() == -1
+            || (!karyawanSwastaCheck.isSelected()
+                    && !pnsCheck.isSelected()
+                    && !wiraswastaCheck.isSelected()
+                    && !akademisiCheck.isSelected()
+                    && !pengangguranCheck.isSelected())
+            || citizenshipGroup.getSelection() == null
+            || (citizenshipGroup.getSelection() != null 
+                && citizenshipGroup.getSelection().getActionCommand().equals("WNA")
+                && citizenshipField.getText().trim().isEmpty())
+            || photoFile == null
+            || signatureFile == null
+            || tglBerlakuField.getText().trim().isEmpty()
+            || kotaPembuatanField.getText().trim().isEmpty()
+            || tglPembuatanPicker.getModel().getValue() == null) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 
