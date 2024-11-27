@@ -10,7 +10,7 @@ public class KTP {
     private String tempatLahir;
     private String tanggalLahir;
     private JenisKelamin jenisKelamin;
-    private GolonganDarah golonganDarah;
+    private String golonganDarah;
     private String alamat;
     private String rtrw;
     private String kelDesa;
@@ -24,7 +24,7 @@ public class KTP {
     private File tandaTanganFilePath;
     private String berlakuHingga;
     private String kotaPembuatan;
-    private Date tanggalPembuatan;
+    private String tanggalPembuatan;
 
     @Override
     public String toString() {
@@ -41,10 +41,10 @@ public class KTP {
     }
 
     public KTP(String nik, String nama, String tempatLahir, String tanggalLahir, JenisKelamin jenisKelamin,
-            GolonganDarah golonganDarah, String alamat, String rtrw, String kelDesa, String kecamatan, JenisAgama agama,
+            String golonganDarah, String alamat, String rtrw, String kelDesa, String kecamatan, JenisAgama agama,
             StatusPerkawinan statusPerkawinan, String pekerjaan, String kewarganegaraan, String wargaNegaraAsal,
             File fotoFilePath, File tandaTanganFilePath, String berlakuHingga, String kotaPembuatan,
-            Date tanggalPembuatan) {
+            String tanggalPembuatan) {
         this.nik = nik;
         this.nama = nama;
         this.tempatLahir = tempatLahir;
@@ -107,11 +107,11 @@ public class KTP {
         this.jenisKelamin = jenisKelamin;
     }
 
-    public GolonganDarah getGolonganDarah() {
+    public String getGolonganDarah() {
         return golonganDarah;
     }
 
-    public void setGolonganDarah(GolonganDarah golonganDarah) {
+    public void setGolonganDarah(String golonganDarah) {
         this.golonganDarah = golonganDarah;
     }
 
@@ -219,11 +219,11 @@ public class KTP {
         this.kotaPembuatan = kotaPembuatan;
     }
 
-    public Date getTanggalPembuatan() {
+    public String getTanggalPembuatan() {
         return tanggalPembuatan;
     }
 
-    public void setTanggalPembuatan(Date tanggalPembuatan) {
+    public void setTanggalPembuatan(String tanggalPembuatan) {
         this.tanggalPembuatan = tanggalPembuatan;
     }
 

@@ -1,6 +1,7 @@
 package view;
 
 import model.*;
+import controller.*;
 
 import java.util.Date;
 import java.util.Properties;
@@ -237,15 +238,16 @@ public class FormInputData {
 
         JRadioButton wniRadio = new JRadioButton("WNI");
         wniRadio.setBounds(600, 160, 100, 20);
-        formKTP.add(wniRadio);
-
+        
         JRadioButton wnaRadio = new JRadioButton("WNA");
         wnaRadio.setBounds(700, 160, 100, 20);
-        formKTP.add(wnaRadio);
-
+        wniRadio.setActionCommand("WNI");
+        wnaRadio.setActionCommand("WNA");
         ButtonGroup citizenshipGroup = new ButtonGroup();
         citizenshipGroup.add(wniRadio);
         citizenshipGroup.add(wnaRadio);
+        formKTP.add(wniRadio);
+        formKTP.add(wnaRadio);
 
         JLabel countryLabel = new JLabel("Asal Negara");
         countryLabel.setBounds(400, 200, 200, 20);
@@ -333,6 +335,68 @@ public class FormInputData {
         formKTP.add(submitButton);
 
         formKTP.setVisible(true);
+
+        submitButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (Controller.checkInput(inputNIK, inputNama, inputTempatLahir, datePicker, groupJenisKelamin, groupGolonganDarah,
+                        inputAlamat, inputRTRW, inputKelDesa, inputKecamatan, agamaComboBox, kawinComboBox,
+                        karyawanSwastaCheck, pnsCheck, wiraswastaCheck, akademisiCheck, pengangguranCheck,
+                        citizenshipGroup, citizenshipField, photoFile, signatureFile, tglBerlakuField,
+                        kotaPembuatanField, tglPembuatanPicker)) {
+
+                    String nik = inputNIK.getText();
+                    String nama = inputNama.getText();
+                    String tempatLahir = inputTempatLahir.getText();
+
+                    Date tanggalLahir = (Date) datePicker.getModel().getValue();
+                    LocalDate tanggalLahirlocalDate = tanggalLahir.toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
+                    String tanggalLahirlocalDateFormatted = tanggalLahirlocalDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                    JenisKelamin jenisKelamin = inputJenisKelaminPria.isSelected() ? JenisKelamin.PRIA : JenisKelamin.WANITA;
+                    String golDarah = groupGolonganDarah.getSelection().getActionCommand();
+                    String alamat = inputAlamat.getText();
+                    String rtrw = inputRTRW.getText();
+                    String kelDesa = inputKelDesa.getText();
+                    String kecamatan = inputKecamatan.getText();
+                    JenisAgama agama = Controller.getJenisAgama(String.valueOf(agamaComboBox.getSelectedItem()));
+                    StatusPerkawinan statusPerkawinan = Controller.getStatusPerkawinan(String.valueOf(kawinComboBox.getSelectedItem()));
+                    String pekerjaan = Controller.getSelectedJobs(karyawanSwastaCheck, pnsCheck, wiraswastaCheck, akademisiCheck, pengangguranCheck);
+                    String wargaNegaraAsal = wnaRadio.isSelected() ? citizenshipField.getText() : null;
+                    System.out.println("WNA : " + wargaNegaraAsal);
+                    System.out.println("Citizenship group : " + citizenshipGroup.getSelection().getActionCommand());
+                    String kewarganegaraan = Controller.getCitizenship(citizenshipGroup.getSelection().getActionCommand(), wargaNegaraAsal);
+                    System.out.println("kewarganegaraan : " + kewarganegaraan);
+                    String berlakuHingga = tglBerlakuField.getText();
+                    String kotaPembuatan = kotaPembuatanField.getText();
+
+                    Date tanggalPembuatan = (Date) tglPembuatanPicker.getModel().getValue();
+                    LocalDate tanggalPembuatanlocalDate = tanggalPembuatan.toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
+                    String tanggalPembuatanlocalDateFormatted = tanggalPembuatanlocalDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+                    KTP ktp = Controller.createKTP(nik, nama, tempatLahir, tanggalLahirlocalDateFormatted, jenisKelamin, golDarah, alamat, rtrw, kelDesa, kecamatan, agama, statusPerkawinan, 
+                    pekerjaan, kewarganegaraan, wargaNegaraAsal, photoFile, signatureFile, berlakuHingga, kotaPembuatan, tanggalPembuatanlocalDateFormatted);
+                    
+                    formKTP.dispose();
+
+                    new PrintKTP(ktp);
+
+                } 
+                else {
+
+                    JOptionPane.showMessageDialog(formKTP, "Semua field harus diisi", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+
+                }
+
+            }
+
+        });
     }
 
 }
