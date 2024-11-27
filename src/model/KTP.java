@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Date;
 
 public class KTP {
-    
+
     private String nik;
     private String nama;
     private String tempatLahir;
@@ -12,8 +12,7 @@ public class KTP {
     private JenisKelamin jenisKelamin;
     private GolonganDarah golonganDarah;
     private String alamat;
-    private String rt;
-    private String rw;
+    private String rtrw;
     private String kelDesa;
     private String kecamatan;
     private JenisAgama agama;
@@ -30,21 +29,22 @@ public class KTP {
     @Override
     public String toString() {
         return "KTP [nik=" + nik + ", nama=" + nama + ", tempatLahir=" + tempatLahir + ", tanggalLahir=" + tanggalLahir
-                + ", jenisKelamin=" + jenisKelamin + ", golDarah=" + golonganDarah + ", alamat=" + alamat + ", rt=" + rt
-                + ", rw=" + rw + ", kelDesa=" + kelDesa + ", kecamatan=" + kecamatan + ", agama=" + agama
+                + ", jenisKelamin=" + jenisKelamin + ", golDarah=" + golonganDarah + ", alamat=" + alamat + ", rt/rw="
+                + rtrw + ", kelDesa=" + kelDesa + ", kecamatan=" + kecamatan + ", agama=" + agama
                 + ", statusPerkawinan=" + statusPerkawinan + ", pekerjaan=" + pekerjaan + ", kewarganegaraan="
                 + kewarganegaraan + ", wargaNegaraAsal=" + wargaNegaraAsal + ", fotoFilePath=" + fotoFilePath
                 + ", tandaTanganFilePath=" + tandaTanganFilePath + ", berlakuHingga=" + berlakuHingga
                 + ", kotaPembuatan=" + kotaPembuatan + ", tanggalPembuatan=" + tanggalPembuatan + "]";
     }
 
-    public KTP () {}
+    public KTP() {
+    }
 
     public KTP(String nik, String nama, String tempatLahir, String tanggalLahir, JenisKelamin jenisKelamin,
-            GolonganDarah golonganDarah, String alamat, String rt, String rw, String kelDesa, String kecamatan,
-            JenisAgama agama, StatusPerkawinan statusPerkawinan, String pekerjaan, String kewarganegaraan,
-            String wargaNegaraAsal, File fotoFilePath, File tandaTanganFilePath, String berlakuHingga,
-            String kotaPembuatan, Date tanggalPembuatan) {
+            GolonganDarah golonganDarah, String alamat, String rtrw, String kelDesa, String kecamatan, JenisAgama agama,
+            StatusPerkawinan statusPerkawinan, String pekerjaan, String kewarganegaraan, String wargaNegaraAsal,
+            File fotoFilePath, File tandaTanganFilePath, String berlakuHingga, String kotaPembuatan,
+            Date tanggalPembuatan) {
         this.nik = nik;
         this.nama = nama;
         this.tempatLahir = tempatLahir;
@@ -52,8 +52,7 @@ public class KTP {
         this.jenisKelamin = jenisKelamin;
         this.golonganDarah = golonganDarah;
         this.alamat = alamat;
-        this.rt = rt;
-        this.rw = rw;
+        this.rtrw = rtrw;
         this.kelDesa = kelDesa;
         this.kecamatan = kecamatan;
         this.agama = agama;
@@ -124,20 +123,12 @@ public class KTP {
         this.alamat = alamat;
     }
 
-    public String getRt() {
-        return rt;
+    public String getRtrw() {
+        return rtrw;
     }
 
-    public void setRt(String rt) {
-        this.rt = rt;
-    }
-
-    public String getRw() {
-        return rw;
-    }
-
-    public void setRw(String rw) {
-        this.rw = rw;
+    public void setRtrw(String rtrw) {
+        this.rtrw = rtrw;
     }
 
     public String getKelDesa() {
