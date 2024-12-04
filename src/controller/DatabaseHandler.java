@@ -8,7 +8,7 @@ public class DatabaseHandler {
 
     public Connection con;
     private String driver = "com.mysql.cj.jdbc.Driver";
-    private String url = "jdbc:mysql://localhost/ktpdatabase";
+    private String url = "jdbc:mysql://localhost:3306/ktpdatabase?useSSL=false&serverTimezone=UTC";
     private String username = "root";
     private String password = "";
 
@@ -37,7 +37,6 @@ public class DatabaseHandler {
     public void connect() {
         try {
             con = logOn();
-
         } 
         catch (Exception ex) {
             System.out.println("Error occured when connecting to database");

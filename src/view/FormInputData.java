@@ -388,7 +388,7 @@ public class FormInputData {
                             kotaPembuatan, tanggalPembuatanlocalDateFormatted, actionValue);
 
                     formKTP.dispose();
-                    DBController.insertNewUser(ktp);
+                    
                     new PrintKTP(ktp);
                 } else {
                     JOptionPane.showMessageDialog(formKTP, "Semua field harus diisi", "Error",
