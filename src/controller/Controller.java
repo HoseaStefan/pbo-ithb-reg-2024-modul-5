@@ -18,46 +18,45 @@ import model.StatusPerkawinan;
 
 public class Controller {
     public static boolean checkInput(
-        JTextField nikField, JTextField namaField, JTextField tempatLahirField, JDatePickerImpl datePicker,
-        ButtonGroup genderGroup, ButtonGroup bloodGroup, JTextField alamatField, JTextField rtrw,
-        JTextField kelurahanField, JTextField kecamatanField, JComboBox<String> agamaComboBox,
-        JComboBox<String> perkawinanBox, JCheckBox karyawanSwastaCheck, JCheckBox pnsCheck,
-        JCheckBox wiraswastaCheck, JCheckBox akademisiCheck, JCheckBox pengangguranCheck,
-        ButtonGroup citizenshipGroup, JTextField citizenshipField, File photoFile, File signatureFile,
-        JTextField tglBerlakuField, JTextField kotaPembuatanField, JDatePickerImpl tglPembuatanPicker) {
+            JTextField nikField, JTextField namaField, JTextField tempatLahirField, JDatePickerImpl datePicker,
+            ButtonGroup genderGroup, ButtonGroup bloodGroup, JTextField alamatField, JTextField rtrw,
+            JTextField kelurahanField, JTextField kecamatanField, JComboBox<String> agamaComboBox,
+            JComboBox<String> perkawinanBox, JCheckBox karyawanSwastaCheck, JCheckBox pnsCheck,
+            JCheckBox wiraswastaCheck, JCheckBox akademisiCheck, JCheckBox pengangguranCheck,
+            ButtonGroup citizenshipGroup, JTextField citizenshipField, File photoFile, File signatureFile,
+            JTextField tglBerlakuField, JTextField kotaPembuatanField, JDatePickerImpl tglPembuatanPicker) {
 
-    if (nikField.getText().trim().isEmpty()
-            || namaField.getText().trim().isEmpty()
-            || tempatLahirField.getText().trim().isEmpty()
-            || datePicker.getModel().getValue() == null
-            || genderGroup.getSelection() == null
-            || bloodGroup.getSelection() == null
-            || alamatField.getText().trim().isEmpty()
-            || rtrw.getText().trim().isEmpty()
-            || kelurahanField.getText().trim().isEmpty()
-            || kecamatanField.getText().trim().isEmpty()
-            || agamaComboBox.getSelectedIndex() == -1
-            || perkawinanBox.getSelectedIndex() == -1
-            || (!karyawanSwastaCheck.isSelected()
-                    && !pnsCheck.isSelected()
-                    && !wiraswastaCheck.isSelected()
-                    && !akademisiCheck.isSelected()
-                    && !pengangguranCheck.isSelected())
-            || citizenshipGroup.getSelection() == null
-            || (citizenshipGroup.getSelection() != null 
-                && citizenshipGroup.getSelection().getActionCommand().equals("WNA")
-                && citizenshipField.getText().trim().isEmpty())
-            || photoFile == null
-            || signatureFile == null
-            || tglBerlakuField.getText().trim().isEmpty()
-            || kotaPembuatanField.getText().trim().isEmpty()
-            || tglPembuatanPicker.getModel().getValue() == null) {
-        return false;
-    } else {
-        return true;
+        if (nikField.getText().trim().isEmpty()
+                || namaField.getText().trim().isEmpty()
+                || tempatLahirField.getText().trim().isEmpty()
+                || datePicker.getModel().getValue() == null
+                || genderGroup.getSelection() == null
+                || bloodGroup.getSelection() == null
+                || alamatField.getText().trim().isEmpty()
+                || rtrw.getText().trim().isEmpty()
+                || kelurahanField.getText().trim().isEmpty()
+                || kecamatanField.getText().trim().isEmpty()
+                || agamaComboBox.getSelectedIndex() == -1
+                || perkawinanBox.getSelectedIndex() == -1
+                || (!karyawanSwastaCheck.isSelected()
+                        && !pnsCheck.isSelected()
+                        && !wiraswastaCheck.isSelected()
+                        && !akademisiCheck.isSelected()
+                        && !pengangguranCheck.isSelected())
+                || citizenshipGroup.getSelection() == null
+                || (citizenshipGroup.getSelection() != null
+                        && citizenshipGroup.getSelection().getActionCommand().equals("WNA")
+                        && citizenshipField.getText().trim().isEmpty())
+                || photoFile == null
+                || signatureFile == null
+                || tglBerlakuField.getText().trim().isEmpty()
+                || kotaPembuatanField.getText().trim().isEmpty()
+                || tglPembuatanPicker.getModel().getValue() == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
-}
-
 
     public static String getSelectedJobs(JCheckBox karyawanSwastaCheck, JCheckBox pnsCheck, JCheckBox wiraswastaCheck,
             JCheckBox akademisiCheck, JCheckBox pengangguranCheck) {
@@ -132,12 +131,22 @@ public class Controller {
             JenisKelamin jenisKelamin, String golDarah, String alamat, String rtrw, String kelDesa, String kecamatan,
             JenisAgama agama, StatusPerkawinan statusPerkawinan, String pekerjaan, String kewarganegaraan,
             String wargaNegaraAsal, File photoFile, File signatureFile, String berlakuHingga, String kotaPembuatan,
-            String tanggalPembuatan) {
+            String tanggalPembuatan, int actionValue) {
 
         KTP ktp = new KTP(nik, nama, tempatLahir, tanggalLahir, jenisKelamin, golDarah, alamat, rtrw, kelDesa,
                 kecamatan,
                 agama, statusPerkawinan, pekerjaan, kewarganegaraan, wargaNegaraAsal, photoFile,
                 signatureFile, berlakuHingga, kotaPembuatan, tanggalPembuatan);
+
+        if (actionValue == 1) {
+
+            DBController.insertNewUser(ktp);
+
+        } else {
+
+            DBController.updateData(ktp);
+
+        }
 
         return ktp;
 
