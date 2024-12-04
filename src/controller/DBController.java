@@ -53,6 +53,7 @@ public class DBController {
             e.printStackTrace();
         } 
         conn.disconnect();
+
         return ktp;
     }
 
@@ -63,7 +64,6 @@ public class DBController {
         try {
             conn.connect();
             PreparedStatement stmt = conn.con.prepareStatement(query);
-            
             stmt.setString(1, ktp.getNik());
             stmt.setString(2, ktp.getNama());
             stmt.setString(3, ktp.getTempatLahir());

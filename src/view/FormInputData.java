@@ -113,6 +113,10 @@ public class FormInputData {
         inputGolonganDarahO.setText("O");
         inputGolonganDarahO.setBounds(165, 280, 75, 20);
 
+        inputGolonganDarahA.setActionCommand("A");
+        inputGolonganDarahB.setActionCommand("B");
+        inputGolonganDarahAB.setActionCommand("AB");
+        inputGolonganDarahO.setActionCommand("O");
         formKTP.add(inputGolonganDarahA);
         formKTP.add(inputGolonganDarahB);
         formKTP.add(inputGolonganDarahAB);
@@ -397,7 +401,7 @@ public class FormInputData {
             }
         });
         JButton updateButton = new JButton("UPDATE");
-        updateButton.setBounds(950, 660, 200, 30);
+        updateButton.setBounds(400, 440, 400, 70);
         formKTP.add(updateButton);
 
         updateButton.addActionListener(new ActionListener() {
@@ -458,7 +462,7 @@ public class FormInputData {
         });
 
         JButton deleteButton = new JButton("DELETE");
-        deleteButton.setBounds(720, 660, 200, 30);
+        deleteButton.setBounds(400, 530, 400, 70);
         formKTP.add(deleteButton);
 
         deleteButton.addActionListener(new ActionListener() {
@@ -492,7 +496,6 @@ public class FormInputData {
             formKTP.dispose();
             new MainMenu();
         });
-
         if (actionValue == 1) {
             submitButton.setVisible(true);
             updateButton.setVisible(false);
@@ -502,6 +505,7 @@ public class FormInputData {
             updateButton.setVisible(true);
             deleteButton.setVisible(true);
             inputNIK.setText(myKtp.getNik());
+            inputNIK.setEnabled(false);
             inputNama.setText(myKtp.getNama());
             inputTempatLahir.setText(myKtp.getTempatLahir());
 

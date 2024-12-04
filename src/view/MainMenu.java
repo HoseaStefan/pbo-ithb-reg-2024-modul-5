@@ -21,7 +21,7 @@ public class MainMenu {
         int screenWidth = screenSize.width; // GET PIXELS FOR WIDTH
         int screenHeight = screenSize.height; // GET PIXELS FOR HEIGHT
 
-        final int FRAME_WIDTH = 300; // SET WIDTH
+        final int FRAME_WIDTH = 1000; // SET WIDTH
         final int FRAME_HEIGHT = 400; // SET WEIGHT
 
         int start_x = screenWidth / 2 - (FRAME_WIDTH / 2); // SET START LOCATION FOR X
@@ -35,18 +35,13 @@ public class MainMenu {
         panel.setLayout(null);
         panel.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
 
-        JLabel title = new JLabel("PEREKAMAN DATA");
-        title.setBounds(30, 10, 300, 50);
+        JLabel title = new JLabel("PEREKAMAN DATA E-KTP");
+        title.setBounds(350, 10, 500, 50);
         title.setFont(new Font("SansSerif", Font.BOLD, 24));
         panel.add(title);
 
-        JLabel title2 = new JLabel("E-KTP");
-        title2.setBounds(105, 50, 100, 50);
-        title2.setFont(new Font("SansSerif", Font.BOLD, 24));
-        panel.add(title2);
-
         JButton perekamanBtn = new JButton("PEREKAMAN");
-        perekamanBtn.setBounds(10, 130, 260, 50);
+        perekamanBtn.setBounds(380, 100, 260, 50);
         panel.add(perekamanBtn);
 
         perekamanBtn.addActionListener(e -> {
@@ -55,7 +50,7 @@ public class MainMenu {
         });
 
         JButton pencarianBtn = new JButton("PENCARIAN");
-        pencarianBtn.setBounds(10, 200, 260, 50);
+        pencarianBtn.setBounds(380, 170, 260, 50);
         panel.add(pencarianBtn);
 
         pencarianBtn.addActionListener(e -> {
@@ -64,7 +59,7 @@ public class MainMenu {
         });
 
         JButton exitBtn = new JButton("EXIT");
-        exitBtn.setBounds(10, 270, 260, 50);
+        exitBtn.setBounds(380, 240, 260, 50);
         panel.add(exitBtn);
 
         exitBtn.addActionListener(e -> {
