@@ -86,7 +86,7 @@ public class PrintKTP {
 
         backMainMenu.addActionListener(e -> {
             frame.dispose();
-            new FormInputData();
+            new MainMenu();
         });
 
         frame.add(panel);
