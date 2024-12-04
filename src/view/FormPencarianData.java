@@ -14,20 +14,19 @@ public class FormPencarianData {
 
     public void showSearchForm() {
 
-        Toolkit toolkit = Toolkit.getDefaultToolkit(); // INIT TOOLKIT
-        Dimension screenSize = toolkit.getScreenSize(); // GET MY SCREEN SIZE
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = toolkit.getScreenSize();
 
-        int screenWidth = screenSize.width; // GET PIXELS FOR WIDTH
-        int screenHeight = screenSize.height; // GET PIXELS FOR HEIGHT
+        int screenWidth = screenSize.width;
+        int screenHeight = screenSize.height; 
+        final int FRAME_WIDTH = 400;
+        final int FRAME_HEIGHT = 150;
 
-        final int FRAME_WIDTH = 400; // SET WIDTH
-        final int FRAME_HEIGHT = 150; // SET WEIGHT
-
-        int start_x = screenWidth / 2 - (FRAME_WIDTH / 2); // SET START LOCATION FOR X
-        int start_y = screenHeight / 2 - (FRAME_HEIGHT / 2); // SET START LOCATION FOR Y
+        int start_x = screenWidth / 2 - (FRAME_WIDTH / 2); 
+        int start_y = screenHeight / 2 - (FRAME_HEIGHT / 2);
         
         JFrame frame = new JFrame("Cetak KTP");
-        frame.setBounds(start_x, start_y, FRAME_WIDTH, FRAME_HEIGHT); // SET FRAME BOUND
+        frame.setBounds(start_x, start_y, FRAME_WIDTH, FRAME_HEIGHT); 
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JPanel panel = new JPanel();
@@ -48,29 +47,18 @@ public class FormPencarianData {
         panel.add(searchButton);
 
         searchButton.addActionListener(e -> {
-
             if (!keyField.getText().isEmpty()) {
-                
-                
                 if (DBController.getKTP(keyField.getText()) != null) {
-                    
                     frame.dispose();
                     new FormInputData(2, DBController.getKTP(keyField.getText()));
-
                 }
                 else {
-
                     JOptionPane.showMessageDialog(null, "Data tidak ditemukan!", "Notifikasi", JOptionPane.INFORMATION_MESSAGE);
-
                 }
-
             }
             else {
-
                 JOptionPane.showMessageDialog(null, "Field Harus Diisi!", "Error", JOptionPane.ERROR_MESSAGE);
-
             }
-
         });
 
         JButton mainMenuButton = new JButton("BACK TO MAIN MENU");

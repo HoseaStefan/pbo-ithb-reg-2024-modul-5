@@ -139,24 +139,15 @@ public class Controller {
                 signatureFile, berlakuHingga, kotaPembuatan, tanggalPembuatan);
 
         if (actionValue == 1) {
-
             DBController.insertNewUser(ktp);
-
         } else {
-
             DBController.updateData(ktp);
-
         }
-
         return ktp;
-
     }
 
     public static String[] setSelectedJobs(String jobs) {
-
         String[] listJobs = jobs.split(", ");
-
         return listJobs;
-
     }
 }

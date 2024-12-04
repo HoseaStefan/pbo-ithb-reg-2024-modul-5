@@ -390,16 +390,11 @@ public class FormInputData {
                     formKTP.dispose();
                     DBController.insertNewUser(ktp);
                     new PrintKTP(ktp);
-
                 } else {
-
                     JOptionPane.showMessageDialog(formKTP, "Semua field harus diisi", "Error",
                             JOptionPane.ERROR_MESSAGE);
-
                 }
-
             }
-
         });
         JButton updateButton = new JButton("UPDATE");
         updateButton.setBounds(950, 660, 200, 30);
@@ -477,26 +472,16 @@ public class FormInputData {
                         "Konfirmasi Penghapusan", JOptionPane.YES_NO_OPTION);
 
                 if (option == JOptionPane.YES_OPTION) {
-
                     formKTP.dispose();
                     boolean deleteSuccess = DBController.deleteData(nik);
-
                     if (deleteSuccess) {
-
                         JOptionPane.showMessageDialog(formKTP, "Data dengan NIK " + nik + " berhasil dihapus.");
-
                     } else {
-
                         JOptionPane.showMessageDialog(formKTP, "Gagal menghapus data dengan NIK " + nik + ".");
-
                     }
-
                     new MainMenu();
-
                 }
-
             }
-
         });
 
         JButton mainMenuButton = new JButton("BACK TO MAIN MENU");
@@ -509,17 +494,13 @@ public class FormInputData {
         });
 
         if (actionValue == 1) {
-
             submitButton.setVisible(true);
             updateButton.setVisible(false);
             deleteButton.setVisible(false);
-
         } else {
-
             submitButton.setVisible(false);
             updateButton.setVisible(true);
             deleteButton.setVisible(true);
-
             inputNIK.setText(myKtp.getNik());
             inputNama.setText(myKtp.getNama());
             inputTempatLahir.setText(myKtp.getTempatLahir());
@@ -531,13 +512,9 @@ public class FormInputData {
             model.setValue(tanggalLahir);
 
             if (myKtp.getJenisKelamin() == JenisKelamin.PRIA) {
-
                 inputJenisKelaminPria.setSelected(true);
-
             } else {
-
                 inputJenisKelaminWanita.setSelected(true);
-
             }
 
             String golDarah = myKtp.getGolonganDarah();
@@ -569,7 +546,6 @@ public class FormInputData {
             String[] listJobs = Controller.setSelectedJobs(myKtp.getPekerjaan());
 
             for (int i = 0; i < listJobs.length; i++) {
-
                 switch (listJobs[i]) {
                     case "KARYAWAN SWASTA":
                         karyawanSwastaCheck.setSelected(true);
@@ -586,23 +562,17 @@ public class FormInputData {
                     case "PENGANGGURAN":
                         pengangguranCheck.setSelected(true);
                         break;
-
                 }
-
             }
 
             String kewarganegaraan = myKtp.getKewarganegaraan();
             if (kewarganegaraan.equals("WNI")) {
-
                 wniRadio.setSelected(true);
                 citizenshipField.setVisible(false);
-
             } else {
-
                 wnaRadio.setSelected(true);
                 citizenshipField.setVisible(true);
                 citizenshipField.setText(myKtp.getWargaNegaraAsal());
-
             }
 
             photoFile = myKtp.getFotoFilePath();

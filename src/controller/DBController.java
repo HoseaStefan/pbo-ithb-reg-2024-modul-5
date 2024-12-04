@@ -15,18 +15,13 @@ public class DBController {
     public static KTP getKTP(String nik) {
 
         KTP ktp = new KTP();
-
         try {
-
             conn.connect();
             String query = "SELECT * FROM ktp WHERE NIK='" + nik + "'";
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            
             if (rs.next()) {
-                
                 do {
-                    
                     ktp.setNik(rs.getString("NIK"));
                     ktp.setNama(rs.getString("nama"));
                     ktp.setTempatLahir(rs.getString("tempat_lahir"));
@@ -47,34 +42,25 @@ public class DBController {
                     ktp.setBerlakuHingga(rs.getString("berlaku_hingga"));
                     ktp.setKotaPembuatan(rs.getString("kota_pembuatan"));
                     ktp.setTanggalPembuatan(rs.getString("tanggal_pembuatan"));
-
                 } while (rs.next());
-
             }
             else {
-
                 return null;
-
             }
 
         } 
         catch (SQLException e) {
-
             e.printStackTrace();
-
         } 
-
         conn.disconnect();
         return ktp;
-
     }
 
     public static boolean insertNewUser(KTP ktp) {
 
-        String query = "INSERT INTO ktp (nik, nama, tempat_lahir, tanggal_lahir, jenis_kelamin, gol_darah, alamat, rt, rw, keldesa, kecamatan, agama, status_perkawinan, pekerjaan, kewarganegaraan, negara_asal, photo_path, signature_path, berlaku_hingga, kota_pembuatan, tanggal_pembuatan) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO ktp (nik, nama, tempat_lahir, tanggal_lahir, jenis_kelamin, gol_darah, alamat, rtrw, keldesa, kecamatan, agama, status_perkawinan, pekerjaan, kewarganegaraan, negara_asal, photo_path, signature_path, berlaku_hingga, kota_pembuatan, tanggal_pembuatan) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
-
             conn.connect();
             PreparedStatement stmt = conn.con.prepareStatement(query);
             
@@ -101,28 +87,21 @@ public class DBController {
 
             stmt.executeUpdate();
             return true;
-
         } 
         catch (SQLException e) {
-            
             e.printStackTrace();
             return false;
-
         } 
         finally {
-
             conn.disconnect();
-
         }
-
     }
 
     public static boolean updateData(KTP ktp) {
 
-        String query = "UPDATE ktp SET nama=?, tempat_lahir=?, tanggal_lahir=?, jenis_kelamin=?, gol_darah=?, alamat=?, rt=?, rw=?, keldesa=?, kecamatan=?, agama=?, status_perkawinan=?, pekerjaan=?, kewarganegaraan=?, negara_asal=?, photo_path=?, signature_path=?, berlaku_hingga=?, kota_pembuatan=?, tanggal_pembuatan=? WHERE NIK=?";
+        String query = "UPDATE ktp SET nama=?, tempat_lahir=?, tanggal_lahir=?, jenis_kelamin=?, gol_darah=?, alamat=?, rtrw=?, keldesa=?, kecamatan=?, agama=?, status_perkawinan=?, pekerjaan=?, kewarganegaraan=?, negara_asal=?, photo_path=?, signature_path=?, berlaku_hingga=?, kota_pembuatan=?, tanggal_pembuatan=? WHERE NIK=?";
 
         try {
-
             conn.connect();
             PreparedStatement stmt = conn.con.prepareStatement(query);
             
@@ -149,20 +128,14 @@ public class DBController {
 
             int rowsUpdated = stmt.executeUpdate();
             return rowsUpdated > 0;
-
         } 
         catch (SQLException e) {
-
             e.printStackTrace();
             return false;
-
         } 
         finally {
-
             conn.disconnect();
-
         }
-
     }
 
     public static boolean deleteData(String nik) {
@@ -170,7 +143,6 @@ public class DBController {
         String query = "DELETE FROM ktp WHERE NIK=?";
 
         try {
-
             conn.connect();
             PreparedStatement stmt = conn.con.prepareStatement(query);
             
@@ -178,20 +150,13 @@ public class DBController {
 
             int rowsDeleted = stmt.executeUpdate();
             return rowsDeleted > 0;
-
         } 
         catch (SQLException e) {
-
             e.printStackTrace();
             return false;
-
         } 
         finally {
-
             conn.disconnect();
-
         }
-
     }
-
 }
